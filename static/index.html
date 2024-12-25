@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time Security System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Real-Time Security System</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Upload Security Logs</h2>
+      <form id="uploadForm">
+        <textarea id="logInput" placeholder="Paste security logs here..." required></textarea>
+        <button id="analyzeLogs">Analyze Logs</button>
+
+      </form>
+    </section>
+
+    <section id="resultSection" style="display: none;">
+      <h2>Analysis Results</h2>
+      <div id="results"></div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
