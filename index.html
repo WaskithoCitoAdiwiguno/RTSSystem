@@ -171,6 +171,8 @@
         </ul>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
     <script>
         const threatTableBody = document.querySelector('#threatTable tbody');
         const totalThreats = document.getElementById('totalThreats');
@@ -354,6 +356,60 @@
             link.click();
             document.body.removeChild(link);
         }
+
+        function generatePDFReport() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+        
+            // Tambahkan judul
+            doc.setFontSize(16);
+            doc.text("Threat and Risk Scoring Report", 14, 20);
+        
+            // Ambil data dari tabel
+            const table = document.getElementById('threatTable');
+            const rows = table.querySelectorAll('tbody tr');
+            
+            if (rows.length === 0) {
+                alert("No data available to export.");
+                return;
+            }
+        
+            // Ambil data dari tabel untuk autoTable
+            const tableData = [];
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const rowData = Array.from(cells).slice(0, 5).map(cell => cell.textContent);
+                tableData.push(rowData);
+            });
+        
+            // Header tabel
+            const tableHeaders = ['Threat Name', 'STRIDE Category', 'DREAD Score', 'Risk Level', 'Mitigation Recommendation'];
+        
+            // Tambahkan tabel ke PDF
+            doc.autoTable({
+                head: [tableHeaders],
+                body: tableData,
+                startY: 30,
+                theme: 'grid', // Pilihan tema (striped, grid, plain)
+                headStyles: { fillColor: [0, 102, 204] }, // Warna header
+                styles: { fontSize: 10, cellPadding: 5 }, // Ukuran font dan padding sel
+                alternateRowStyles: { fillColor: [240, 240, 240] }, // Warna baris alternatif
+            });
+        
+            // Tambahkan footer
+            const pageCount = doc.internal.getNumberOfPages();
+            for (let i = 1; i <= pageCount; i++) {
+                doc.setPage(i);
+                doc.setFontSize(10);
+                doc.text(`Page ${i} of ${pageCount}`, 14, doc.internal.pageSize.height - 10);
+            }
+        
+            // Simpan PDF
+            doc.save('threat_risk_report.pdf');
+        }
+        
+        
+
     </script>
 </body>
 </html>
