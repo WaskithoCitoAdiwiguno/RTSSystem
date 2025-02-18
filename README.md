@@ -4,26 +4,36 @@ contoh Thread data :
 
 Spoofing:
 
-Threat Name: Unauthorized Login Attempt
-DREAD Score: 8
+Unauthorized Login Attempt
+Phishing Email Attack
+Fake API Token Usage
+
 Tampering:
 
-Threat Name: Database Injection Attack
-DREAD Score: 7
+Malicious File Modification
+Database Injection Attack
+Unauthorized Firmware Update
+
 Repudiation:
 
-Threat Name: Transaction Forgery
-DREAD Score: 6
+Undocumented API Calls
+Anonymous Payment Transactions
+Log Deletion Attempt
+
 Information Disclosure:
 
-Threat Name: Data Leakage via Backup
-DREAD Score: 9
+Sensitive Data Exposure in URL
+Unencrypted Data Transmission
+Misconfigured Cloud Storage
+
 Denial of Service:
 
-Threat Name: DDoS Attack on API
-DREAD Score: 8
+DDoS Attack on Web Server
+Resource Exhaustion via API Abuse
+Network Flooding Attack
+
 Elevation of Privilege:
 
-Threat Name: Exploit via Privilege Escalation
-DREAD Score: 7
-
+Exploiting Buffer Overflow Vulnerability
+Bypassing Authentication Controls
+Privilege Escalation via Misconfigured Policies
